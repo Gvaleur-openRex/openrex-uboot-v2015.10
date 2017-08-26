@@ -53,10 +53,12 @@
 #define CONFIG_SYS_I2C_SPEED		  100000
 
 /* PMIC */
+#if 0
 #define CONFIG_POWER
 #define CONFIG_POWER_I2C
 #define CONFIG_POWER_PFUZE100
 #define CONFIG_POWER_PFUZE100_I2C_ADDR	0x08
+#endif
 
 /* USB Configs */
 #define CONFIG_CMD_USB

@@ -51,7 +51,7 @@ DECLARE_GLOBAL_DATA_PTR;
 	PAD_CTL_SPEED_MED | PAD_CTL_DSE_40ohm | PAD_CTL_HYS |	\
 	PAD_CTL_ODE | PAD_CTL_SRE_FAST)
 
-#define I2C_PMIC	1
+//#define I2C_PMIC	1
 
 #define I2C_PAD MUX_PAD_CTRL(I2C_PAD_CTRL)
 
@@ -105,11 +105,7 @@ static iomux_v3_cfg_t const usdhc2_pads[] = {
 	MX6_PAD_SD2_DAT1__SD2_DATA1	| MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_SD2_DAT2__SD2_DATA2	| MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_SD2_DAT3__SD2_DATA3	| MUX_PAD_CTRL(USDHC_PAD_CTRL),
-	MX6_PAD_NANDF_D4__SD2_DATA4	| MUX_PAD_CTRL(USDHC_PAD_CTRL),
-	MX6_PAD_NANDF_D5__SD2_DATA5	| MUX_PAD_CTRL(USDHC_PAD_CTRL),
-	MX6_PAD_NANDF_D6__SD2_DATA6	| MUX_PAD_CTRL(USDHC_PAD_CTRL),
-	MX6_PAD_NANDF_D7__SD2_DATA7	| MUX_PAD_CTRL(USDHC_PAD_CTRL),
-	MX6_PAD_NANDF_D2__GPIO2_IO02	| MUX_PAD_CTRL(NO_PAD_CTRL), /* CD */
+	MX6_PAD_GPIO_4__GPIO1_IO04	| MUX_PAD_CTRL(NO_PAD_CTRL), /* CD */
 };
 
 static iomux_v3_cfg_t const usdhc3_pads[] = {
@@ -629,7 +625,7 @@ int board_init(void)
 }
 
 int power_init_board(void)
-{
+{/*
 	struct pmic *p;
 	unsigned int reg;
 	int ret;
@@ -642,19 +638,19 @@ int power_init_board(void)
 	if (ret < 0)
 		return ret;
 
-	/* Increase VGEN3 from 2.5 to 2.8V */
+	// Increase VGEN3 from 2.5 to 2.8V 
 	pmic_reg_read(p, PFUZE100_VGEN3VOL, &reg);
 	reg &= ~LDO_VOL_MASK;
 	reg |= LDOB_2_80V;
 	pmic_reg_write(p, PFUZE100_VGEN3VOL, reg);
 
-	/* Increase VGEN5 from 2.8 to 3V */
+	// Increase VGEN5 from 2.8 to 3V 
 	pmic_reg_read(p, PFUZE100_VGEN5VOL, &reg);
 	reg &= ~LDO_VOL_MASK;
 	reg |= LDOB_3_00V;
 	pmic_reg_write(p, PFUZE100_VGEN5VOL, reg);
 
-	return 0;
+	return 0;*/
 }
 
 #ifdef CONFIG_MXC_SPI
